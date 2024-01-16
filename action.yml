@@ -1,10 +1,11 @@
-on:
-  workflow_call:
+name: "Hello World"
+description: "This is a simple hello world action"
+author: Artem Lajko
+branding:
+  icon: "activity"
+  color: "blue"
 
-jobs:
-  echo:
-    runs-on: ubuntu-latest
-    steps:
-      - name: echo
-        run: |
-          echo "teste"
+inputs:
+  custom-text:
+    description: "Custom text to echo"
+    required: true
