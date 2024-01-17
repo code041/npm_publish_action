@@ -1,11 +1,15 @@
-name: "code041/npm_publish"
-description: "This is a simple hello world action"
-author: Artem Lajko
-branding:
-  icon: "activity"
-  color: "blue"
+name: Test
+description: 'composite run action'
 
 inputs:
-  custom-text:
-    description: "Custom text to echo"
+  nome:
+    description: nome da pessoa
     required: true
+
+runs:
+  using: "composite"
+  steps: 
+    - name: Echo
+      shell: bash
+      run: |
+        echo ${{ inputs.nome }}
