@@ -12,6 +12,9 @@ inputs:
   organization:
     description: Organization repository name
     required: true
+  lib_name:
+    description: Library name
+    required: true
 
 runs:
   using: "composite"
@@ -33,10 +36,12 @@ runs:
     - name: Artifact building
       shell: bash
       run: |
+
         npm cache clean --force
         npm install
-        ng build
+        ng build ${{ inputs.lib_name }}
     - name: Artifact publishing
       shell: bash
       run: |
+        cd ${{ inputs.lib_name }}
         npm publish
