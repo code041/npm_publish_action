@@ -47,7 +47,7 @@ runs:
         npm install
         echo 'dependencies installed'
         echo ${{ inputs.lib_name }}
-        ng build ${{ inputs.lib_name }}
+        npm run build ${{ inputs.lib_name }}
         echo 'building finished'
     - name: Artifact publishing
       shell: bash
