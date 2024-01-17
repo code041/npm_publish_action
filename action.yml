@@ -34,6 +34,8 @@ runs:
       shell: bash
       run: |
         npm cache clean --force
+        npm install
+        ng build
     - name: Artifact publishing
       shell: bash
       run: |
