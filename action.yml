@@ -37,4 +37,15 @@ runs:
       shell: bash
       run: |
         npm cache clean --force
+        echo 'cache cleansed'
         npm install
+        echo 'dependencies installed'
+        echo ${{ inputs.lib_name }}
+        ng build ${{ inputs.lib_name }}
+        echo 'building finished'
+    - name: Artifact publishing
+      shell: bash
+      run: |
+        cd dist/${{ inputs.lib_name }}
+        echo 'publishing to registry'
+        npm publish
