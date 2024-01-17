@@ -1,4 +1,4 @@
-name: Test
+name: code041/npm_publish
 description: 'composite run action'
 
 inputs:
