@@ -38,9 +38,3 @@ runs:
       run: |
         npm cache clean --force
         npm install
-        ng build ${{ inputs.lib_name }}
-    - name: Artifact publishing
-      shell: bash
-      run: |
-        cd dist/${{ inputs.lib_name }}
-        npm publish
