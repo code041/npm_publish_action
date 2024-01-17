@@ -1,5 +1,10 @@
 name: code041/npm_publish
 description: 'composite run action'
+author: Felipe Luiz Bill
+branding:
+  icon: "activity"
+  color: "blue"
+
 
 inputs:
   nome:
