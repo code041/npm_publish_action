@@ -6,8 +6,8 @@ branding:
   color: "blue"
 
 inputs:
-  nome:
-    description: nome da pessoa
+  token:
+    description: GitHub token with read and write privileges over packages
     required: true
 
 runs:
@@ -16,7 +16,4 @@ runs:
     - name: Code checkout
       uses: actions/checkout@latest
       with:
-        token: ${{ secrets.NPM_REGISTRY_TOKEN }}
-      run: |
-        echo ${{ github.actor }}
-        echo ${{ inputs.nome }}
+        token: ${{ inputs.token }}
