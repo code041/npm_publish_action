@@ -1,10 +1,9 @@
 name: code041/npm_publish
-description: 'composite run action'
+description: 'NPM publishing action'
 author: Felipe Luiz Bill
 branding:
   icon: "activity"
   color: "blue"
-
 
 inputs:
   nome:
@@ -14,7 +13,10 @@ inputs:
 runs:
   using: "composite"
   steps: 
-    - name: Echo
-      shell: bash
+    - name: Code checkout
+      uses: actions/checkout@latest
+      with:
+        token: ${{ secrets.NPM_REGISTRY_TOKEN }}
       run: |
+        echo ${{ github.actor }}
         echo ${{ inputs.nome }}
