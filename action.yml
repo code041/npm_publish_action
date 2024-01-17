@@ -9,6 +9,9 @@ inputs:
   token:
     description: GitHub token with read and write privileges over packages
     required: true
+  organization:
+    description: Organization repository name
+    required: true
 
 runs:
   using: "composite"
@@ -17,3 +20,21 @@ runs:
       uses: actions/checkout@v4
       with:
         token: ${{ inputs.token }}
+    - name: Git config
+      shell: bash
+      run: |
+        git config --global user.email "${{github.actor}}@users.noreply.github.com"
+        git config --global user.name "${{ github.actor }}"
+    - name: NPM config
+      shell: bash
+      run: |
+        npm config set @${{ inputs.organization }}:registry https://npm.pkg.github.com/
+        npm config set //npm.pkg.github.com/:_authToken=${{ inputs.token }}
+    - name: Artifact building
+      shell: bash
+      run: |
+        npm cache clean --force
+    - name: Artifact publishing
+      shell: bash
+      run: |
+        npm publish
